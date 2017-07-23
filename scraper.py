@@ -45,7 +45,8 @@ def scrape_area(area):
     :return: A list of results.
     """
     cl_h = CraigslistHousing(site=settings.CRAIGSLIST_SITE, area=area, category=settings.CRAIGSLIST_HOUSING_SECTION,
-                             filters={'max_price': settings.MAX_PRICE, "min_price": settings.MIN_PRICE})
+                             filters={'max_price': settings.MAX_PRICE, "min_price": settings.MIN_PRICE,
+                                      'min_bedrooms': settings.MIN_BEDROOMS, 'max_bedrooms': settings.MAX_BEDROOMS})
 
     results = []
     gen = cl_h.get_results(sort_by='newest', geotagged=True, limit=20)
@@ -104,7 +105,8 @@ def scrape_area(area):
             session.commit()
 
             # Return the result if it's near a bart station, or if it is in an area we defined.
-            if len(result["bart"]) > 0 or len(result["area"]) > 0:
+            # if len(result["bart"]) > 0 or len(result["area"]) > 0:
+            if len(result["area"]) > 0:
                 results.append(result)
 
     return results
@@ -124,6 +126,9 @@ def do_scrape():
 
     print("{}: Got {} results".format(time.ctime(), len(all_results)))
 
-    # Post each result to slack.
+    for result in all_results:
+        print(result)
+
+    #Post each result to slack.
     for result in all_results:
         post_listing_to_slack(sc, result)

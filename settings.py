@@ -3,10 +3,14 @@ import os
 ## Price
 
 # The minimum rent you want to pay per month.
-MIN_PRICE = 1500
+MIN_PRICE = 5000
 
 # The maximum rent you want to pay per month.
-MAX_PRICE = 2000
+MAX_PRICE = 10000
+
+MIN_BEDROOMS = 5
+
+MAX_BEDROOMS = 5
 
 ## Location preferences
 
@@ -18,44 +22,20 @@ CRAIGSLIST_SITE = 'sfbay'
 # What Craigslist subdirectories to search on.
 # For instance, https://sfbay.craigslist.org/eby/ is the East Bay, and https://sfbay.craigslist.org/sfc/ is San Francisco.
 # You only need the last three letters of the URLs.
-AREAS = ["eby", "sfc", "sby", "nby"]
+AREAS = ["sfc"]
 
 # A list of neighborhoods and coordinates that you want to look for apartments in.  Any listing that has coordinates
 # attached will be checked to see which area it is in.  If there's a match, it will be annotated with the area
 # name.  If no match, the neighborhood field, which is a string, will be checked to see if it matches
 # anything in NEIGHBORHOODS.
 BOXES = {
-    "adams_point": [
-        [37.80789, -122.25000],
-        [37.81589,	-122.26081],
-    ],
-    "piedmont": [
-        [37.82240, -122.24768],
-        [37.83237, -122.25386],
-    ],
-    "rockridge": [
-        [37.83826, -122.24073],
-        [37.84680, -122.25944],
-    ],
-    "berkeley": [
-        [37.86226, -122.25043],
-        [37.86781, -122.26502],
-    ],
-    "north_berkeley": [
-        [37.86425, -122.26330],
-        [37.87655, -122.28974],
-    ],
     "pac_heights": [
-        [37.79124, -122.42381],
-        [37.79850, -122.44784],
-    ],
-    "lower_pac_heights": [
-        [37.78554, -122.42878],
-        [37.78873, -122.44544],
+        [37.782548, -122.445792],
+        [37.795812, -122.423473],
     ],
     "haight": [
-        [37.77059, -122.42688],
-        [37.77086, -122.45401],
+        [37.766362, -122.453789],
+        [37.774885, -122.424307],
     ],
     "sunset": [
         [37.75451, -122.46422],
@@ -68,14 +48,25 @@ BOXES = {
     "presidio": [
         [37.77805, -122.43959],
         [37.78829, -122.47151],
-    ]
+    ],
+    "mission": [
+        [37.747961, -122.425041],  [37.769843, -122.406374]
+    ],
+    "noe_valley": [[37.740460, -122.441994], [37.754916, -122.425772]],
+    "castro": [[37.753423, -122.445084], [37.769097, -122.426630]],
+    "bernal_heights": [[37.731761, -122.425121], [37.748824, -122.404273]],
+    "cole_valley": [[37.757945, -122.452581], [37.767070, -122.447392]],
+    "nopa": [[37.771618, -122.458124], [37.785498, -122.423218]],
+    "hayes_valley": [[37.769261, -122.429094], [37.778964, -122.421766]],
+    "marina": [[37.792889, -122.446483], [37.810730, -122.424730]],
+    "russian_hill_north_beach": [[37.795761, -122.423521], [37.808956, -122.405164]]
 }
 
 # A list of neighborhood names to look for in the Craigslist neighborhood name field. If a listing doesn't fall into
 # one of the boxes you defined, it will be checked to see if the neighborhood name it was listed under matches one
 # of these.  This is less accurate than the boxes, because it relies on the owner to set the right neighborhood,
 # but it also catches listings that don't have coordinates (many listings are missing this info).
-NEIGHBORHOODS = ["berkeley north", "berkeley", "rockridge", "adams point", "oakland lake merritt", "cow hollow", "piedmont", "pac hts", "pacific heights", "lower haight", "inner sunset", "outer sunset", "presidio", "palo alto", "richmond / seacliff", "haight ashbury", "alameda", "twin peaks", "noe valley", "bernal heights", "glen park", "sunset", "mission district", "potrero hill", "dogpatch"]
+NEIGHBORHOODS = ["cow hollow", "pac hts", "pacific heights", "lower haight", "presidio", "haight ashbury", "noe valley", "bernal heights", "mission", "potrero hill", "north beach", "castro", "marina", "nopa", "western addition"]
 
 ## Transit preferences
 
