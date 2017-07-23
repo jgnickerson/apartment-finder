@@ -29,6 +29,8 @@ RUN mkdir -p /tmp
 COPY requirements.txt /tmp/requirements.txt
 RUN pip3 install -r /tmp/requirements.txt
 
+RUN pip3 install --upgrade requests
+
 COPY deployment/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN mkdir -p /opt/wwc
 ADD . /opt/wwc/apartment-finder

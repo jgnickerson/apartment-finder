@@ -38,7 +38,7 @@ def post_listing_to_slack(sc, listing):
     desc = "{0} | {1} | {2} | {3} | <{4}>".format(listing["area"], listing["price"], listing["bart_dist"], listing["name"], listing["url"])
     sc.api_call(
         "chat.postMessage", channel=settings.SLACK_CHANNEL, text=desc,
-        username='pybot', icon_emoji=':robot_face:'
+        username='apartmentbish', icon_emoji=':robot_face:'
     )
 
 def find_points_of_interest(geotag, location):
@@ -62,7 +62,7 @@ def find_points_of_interest(geotag, location):
             area_found = True
 
     # COMMENTED OUT, We're not interested in Transit options right now.
-    
+
     # # Check to see if the listing is near any transit stations.
     # for station, coords in settings.TRANSIT_STATIONS.items():
     #     dist = coord_distance(coords[0], coords[1], geotag[0], geotag[1])
